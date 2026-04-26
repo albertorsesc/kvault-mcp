@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "active":            { "type": "boolean", "default": false },
+    "lineage_manifest":  { "type": "string",  "default": "memory/semantic/lineage.jsonl" },
+    "frameworks_manifest": { "type": "string", "default": "memory/semantic/frameworks.jsonl" }
+  }
+}

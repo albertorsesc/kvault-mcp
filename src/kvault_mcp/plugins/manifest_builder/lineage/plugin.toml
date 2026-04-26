@@ -1,0 +1,18 @@
+id = "lineage"
+kind = "manifest_builder"
+version = "0.1.0"
+protocol_version = "1.0"
+
+module = "handler"
+entrypoint = "LineageManifestBuilder"
+
+provides = ["manifest_builder"]
+consumes_events = []
+emits_events = ["vault.manifest.lineage.built"]
+
+config_schema = "schema.json"
+install_required = []
+
+[tools.build]
+method = "tool_build"
+description = "Rebuild memory/semantic/lineage.jsonl by scanning wikilinks across configured roots."

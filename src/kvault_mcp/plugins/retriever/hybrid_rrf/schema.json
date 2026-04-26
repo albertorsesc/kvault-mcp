@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "active":     { "type": "boolean", "default": false },
+    "collection": { "type": "string",  "default": "" },
+    "k_fts":      { "type": "integer", "minimum": 1, "default": 20 },
+    "k_vec":      { "type": "integer", "minimum": 1, "default": 20 },
+    "k_out":      { "type": "integer", "minimum": 1, "default": 10 },
+    "rrf_k":      { "type": "integer", "minimum": 1, "default": 60 }
+  }
+}

@@ -1,0 +1,34 @@
+id = "markdown"
+kind = "rule_store"
+version = "0.1.0"
+protocol_version = "1.0"
+
+module = "handler"
+entrypoint = "MarkdownRuleStore"
+
+provides = ["rule_store"]
+consumes_events = []
+emits_events = [
+    "vault.rule.proposed",
+    "vault.rule.activated",
+    "vault.rule.retired",
+]
+
+config_schema = "schema.json"
+install_required = []
+
+[tools.propose]
+method = "tool_propose"
+description = "Draft a new rule into memory/rules/proposed/<id>.md."
+
+[tools.approve]
+method = "tool_approve"
+description = "Promote a proposed rule to active."
+
+[tools.retire]
+method = "tool_retire"
+description = "Move a rule to retired/."
+
+[tools.list]
+method = "tool_list"
+description = "List rules, optionally filtered by status (proposed|active|retired)."

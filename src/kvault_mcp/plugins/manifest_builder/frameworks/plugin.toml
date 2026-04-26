@@ -1,0 +1,18 @@
+id = "frameworks"
+kind = "manifest_builder"
+version = "0.1.0"
+protocol_version = "1.0"
+
+module = "handler"
+entrypoint = "FrameworksManifestBuilder"
+
+provides = ["manifest_builder"]
+consumes_events = []
+emits_events = ["vault.manifest.frameworks.built"]
+
+config_schema = "schema.json"
+install_required = []
+
+[tools.build]
+method = "tool_build"
+description = "Rebuild memory/semantic/frameworks.jsonl by scanning the Frameworks/ directory."

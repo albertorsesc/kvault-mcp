@@ -1,0 +1,14 @@
+id = "ollama"
+kind = "embedding"
+version = "0.1.0"
+protocol_version = "1.0"
+
+module = "handler"
+entrypoint = "OllamaEmbedding"
+
+provides = ["embedding_provider"]
+consumes_events = []
+emits_events = []
+
+config_schema = "schema.json"
+install_required = []

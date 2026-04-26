@@ -1,0 +1,18 @@
+id = "schemas"
+kind = "audit"
+version = "0.1.0"
+protocol_version = "1.0"
+
+module = "handler"
+entrypoint = "SchemasAudit"
+
+provides = ["audit"]
+consumes_events = []
+emits_events = ["vault.audit.schemas.completed"]
+
+config_schema = "schema.json"
+install_required = []
+
+[tools.run]
+method = "tool_run"
+description = "Validate every JSONL file in memory/semantic against its registered JSON schema."

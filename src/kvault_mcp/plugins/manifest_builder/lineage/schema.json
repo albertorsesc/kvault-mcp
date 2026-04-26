@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "active":     { "type": "boolean", "default": false },
+    "roots":      { "type": "array", "items": { "type": "string" }, "default": ["."] },
+    "output":     { "type": "string", "default": "memory/semantic/lineage.jsonl" },
+    "extensions": { "type": "array", "items": { "type": "string" }, "default": [".md"] }
+  }
+}

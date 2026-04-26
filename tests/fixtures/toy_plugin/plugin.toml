@@ -1,0 +1,18 @@
+id = "toy"
+kind = "retriever"
+version = "0.1.0"
+protocol_version = "1.0"
+
+module = "handler"
+entrypoint = "ToyRetriever"
+
+provides = ["retriever"]
+consumes_events = ["vault.toy.ping"]
+emits_events = []
+
+config_schema = "schema.json"
+install_required = []
+
+[tools.echo]
+method = "echo"
+description = "Echo arguments back (toy test tool)."

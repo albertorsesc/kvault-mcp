@@ -1,0 +1,79 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "kvault-mcp"
+version = "0.1.0"
+description = "A plugin-first MCP server for operating on knowledge vaults."
+readme = "README.md"
+requires-python = ">=3.13"
+license = { file = "LICENSE" }
+authors = [{ name = "Alberto Rosas", email = "alberto.rsesc@protonmail.com" }]
+keywords = ["mcp", "knowledge-vault", "fts5", "sqlite-vec", "obsidian", "rag"]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Operating System :: POSIX",
+    "Operating System :: MacOS",
+]
+
+dependencies = [
+    "fastmcp>=3.2,<4",
+    "jsonschema>=4.23",
+    "sqlite-vec>=0.1.9,<0.2",
+]
+
+[project.urls]
+Homepage = "https://github.com/albertorsesc/kvault-mcp"
+Repository = "https://github.com/albertorsesc/kvault-mcp"
+Issues = "https://github.com/albertorsesc/kvault-mcp/issues"
+Documentation = "https://github.com/albertorsesc/kvault-mcp/tree/main/docs"
+Changelog = "https://github.com/albertorsesc/kvault-mcp/blob/main/CHANGELOG.md"
+
+[project.scripts]
+kvault-mcp = "kvault_mcp.server:main"
+
+[project.entry-points."kvault.plugins"]
+embedding_ollama               = "kvault_mcp.plugins.embedding.ollama.handler:OllamaEmbedding"
+vector_store_sqlite_vec        = "kvault_mcp.plugins.vector_store.sqlite_vec.handler:SqliteVecStore"
+text_index_fts5                = "kvault_mcp.plugins.text_index.fts5.handler:Fts5TextIndex"
+retriever_fts_only             = "kvault_mcp.plugins.retriever.fts_only.handler:FtsOnlyRetriever"
+retriever_hybrid_rrf           = "kvault_mcp.plugins.retriever.hybrid_rrf.handler:HybridRrfRetriever"
+manifest_builder_capabilities  = "kvault_mcp.plugins.manifest_builder.capabilities.handler:CapabilitiesManifestBuilder"
+manifest_builder_frameworks    = "kvault_mcp.plugins.manifest_builder.frameworks.handler:FrameworksManifestBuilder"
+manifest_builder_lineage       = "kvault_mcp.plugins.manifest_builder.lineage.handler:LineageManifestBuilder"
+audit_schemas                  = "kvault_mcp.plugins.audit.schemas.handler:SchemasAudit"
+audit_broken_wikilinks         = "kvault_mcp.plugins.audit.broken_wikilinks.handler:BrokenWikilinksAudit"
+audit_lineage_dangling         = "kvault_mcp.plugins.audit.lineage_dangling.handler:LineageDanglingAudit"
+rules_store_markdown           = "kvault_mcp.plugins.rules.store.markdown.handler:MarkdownRuleStore"
+rules_injector_markdown_markers = "kvault_mcp.plugins.rules.injector.markdown_markers.handler:MarkdownMarkersInjector"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3",
+    "pytest-asyncio>=0.24",
+    "pytest-cov>=5.0",
+    "ruff>=0.6",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/kvault_mcp"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP"]
+ignore = ["E501"]  # handled by formatter
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+asyncio_mode = "auto"

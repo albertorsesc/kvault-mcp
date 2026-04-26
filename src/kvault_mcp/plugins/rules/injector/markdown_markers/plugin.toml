@@ -1,0 +1,18 @@
+id = "markdown_markers"
+kind = "rule_injector"
+version = "0.1.0"
+protocol_version = "1.0"
+
+module = "handler"
+entrypoint = "MarkdownMarkersInjector"
+
+provides = ["rule_injector"]
+consumes_events = ["vault.rule.activated", "vault.rule.retired"]
+emits_events = ["vault.rules.injected"]
+
+config_schema = "schema.json"
+install_required = []
+
+[tools.inject]
+method = "tool_inject"
+description = "Render every active rule into the target instruction file between kvault markers."

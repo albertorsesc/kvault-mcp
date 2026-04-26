@@ -1,0 +1,18 @@
+id = "fts_only"
+kind = "retriever"
+version = "0.1.0"
+protocol_version = "1.0"
+
+module = "handler"
+entrypoint = "FtsOnlyRetriever"
+
+provides = ["retriever"]
+consumes_events = []
+emits_events = []
+
+config_schema = "schema.json"
+install_required = []
+
+[tools.search]
+method = "tool_search"
+description = "Keyword search via the active TextIndex."

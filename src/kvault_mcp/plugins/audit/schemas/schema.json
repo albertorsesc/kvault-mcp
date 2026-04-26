@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "active":  { "type": "boolean", "default": false },
+    "targets": {
+      "type": "object",
+      "description": "Map of manifest file path (relative to vault) to JSON Schema path. Paths are relative to vault_root.",
+      "additionalProperties": { "type": "string" },
+      "default": {}
+    }
+  }
+}

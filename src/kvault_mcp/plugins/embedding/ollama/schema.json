@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "active":     { "type": "boolean", "default": false },
+    "endpoint":   { "type": "string",  "default": "http://localhost:11434" },
+    "model":      { "type": "string",  "default": "nomic-embed-text:latest" },
+    "dimensions": { "type": "integer", "minimum": 1, "default": 768 },
+    "timeout":    { "type": "number",  "minimum": 1, "default": 60 },
+    "batch_size": { "type": "integer", "minimum": 1, "default": 32 }
+  }
+}

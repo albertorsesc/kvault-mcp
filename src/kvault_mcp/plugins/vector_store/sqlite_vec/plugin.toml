@@ -1,0 +1,14 @@
+id = "sqlite_vec"
+kind = "vector_store"
+version = "0.1.0"
+protocol_version = "1.0"
+
+module = "handler"
+entrypoint = "SqliteVecStore"
+
+provides = ["vector_store"]
+consumes_events = []
+emits_events = []
+
+config_schema = "schema.json"
+install_required = ["sqlite-vec"]

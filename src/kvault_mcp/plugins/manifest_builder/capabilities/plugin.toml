@@ -1,0 +1,18 @@
+id = "capabilities"
+kind = "manifest_builder"
+version = "0.1.0"
+protocol_version = "1.0"
+
+module = "handler"
+entrypoint = "CapabilitiesManifestBuilder"
+
+provides = ["manifest_builder"]
+consumes_events = []
+emits_events = ["vault.manifest.capabilities.built"]
+
+config_schema = "schema.json"
+install_required = []
+
+[tools.build]
+method = "tool_build"
+description = "Rebuild memory/semantic/vault-capabilities.jsonl from currently-discovered plugins."

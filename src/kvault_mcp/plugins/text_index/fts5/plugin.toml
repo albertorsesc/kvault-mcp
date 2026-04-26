@@ -1,0 +1,22 @@
+id = "fts5"
+kind = "text_index"
+version = "0.1.0"
+protocol_version = "1.0"
+
+module = "handler"
+entrypoint = "Fts5TextIndex"
+
+provides = ["text_index"]
+consumes_events = []
+emits_events = ["vault.index.rebuilt"]
+
+config_schema = "schema.json"
+install_required = []
+
+[tools.rebuild_index]
+method = "tool_rebuild"
+description = "(Re)build the FTS5 index from markdown files under the configured roots."
+
+[tools.search]
+method = "tool_search"
+description = "Keyword search via FTS5."
